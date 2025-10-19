@@ -148,6 +148,7 @@ const EMICalculator = () => {
                                                 <Col className="error-message">{errors.principle}</Col>
                                             ) : null}
                                         </div>
+                                        <label>Payment System :</label>
                                     </div>
                                     <div className='Row'>
                                         <label>Interest Rate (%) :</label>
