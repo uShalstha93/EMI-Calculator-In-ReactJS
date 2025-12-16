@@ -3,6 +3,7 @@ import { Container, Modal, Col, Form, Table } from 'react-bootstrap'
 import './style.css'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import NepaliCalendar from '../../assets/NepaliCalendar'
 
 const EMICalculator = () => {
 
@@ -13,6 +14,12 @@ const EMICalculator = () => {
     const [showPeriod, SetShowPeriod] = useState(0)
     const [kistaSchedule, setKistaSchedule] = useState([])
     const [showSchedule, setShowSchedule] = useState(false)
+    const [selectedDate, setSelectedDate] = useState('');
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+        console.log('Selected Date:', date);
+    }
 
     const handleShowModal = () => setShowModal(true)
     const handleCloseModal = () => { setShowModal(false); setMonthlyEMI('') }
@@ -148,7 +155,10 @@ const EMICalculator = () => {
                                                 <Col className="error-message">{errors.principle}</Col>
                                             ) : null}
                                         </div>
-                                        <label>Payment System :</label>
+                                        <label>Date :</label>
+                                        <div className='row'>
+                                            <NepaliCalendar value={selectedDate} onChange={handleDateChange} width={100} placeholder='YYYY-MM-DD' />
+                                        </div>
                                     </div>
                                     <div className='Row'>
                                         <label>Interest Rate (%) :</label>
